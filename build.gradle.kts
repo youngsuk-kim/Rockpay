@@ -34,10 +34,13 @@ dependencies {
     // spring mvc
     implementation("org.springframework.boot:spring-boot-starter-web")
 
+    // spring jpa
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
     // h2 database
     runtimeOnly("com.h2database:h2")
 
-    // Kotlin test
+    // kotlin test
     testImplementation("io.kotest:kotest-assertions-core:$koTestVersion")
     testImplementation("io.mockk:mockk:${mockkVersion}")
 }
