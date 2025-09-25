@@ -1,7 +1,7 @@
 package com.rockpay.domain.point
 
 import com.rockpay.domain.Id
-import java.math.BigDecimal // Keep for now, might be removed if not used elsewhere
+import java.math.BigDecimal
 
 class Point(
     id: Id = Id.of(),
