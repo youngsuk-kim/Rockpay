@@ -17,7 +17,7 @@ class Buyer(
         private set
 
     fun changeEmail(newEmail: String): Buyer {
-        return of(name = this.name, email = email)
+        return of(name = this.name, email = newEmail)
     }
 
     companion object {
