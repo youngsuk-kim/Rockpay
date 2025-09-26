@@ -26,7 +26,7 @@ class PromotionProduct(
         private set
 
     fun discount(discountedPrice: Price) {
-        this.product.onPromotion(discountedPrice)
+        this.product.updateDiscountAmount(discountedPrice)
     }
 
     fun apply() {

@@ -3,6 +3,7 @@ package com.rockpay.domain.order
 import com.rockpay.domain.Id
 import com.rockpay.domain.Price
 import com.rockpay.domain.coupon.Coupon
+import com.rockpay.domain.order.OrderItem.Companion.sumOfPrices
 import com.rockpay.domain.order.OrderStatus.PENDING
 import com.rockpay.domain.point.PointBalance
 
@@ -28,7 +29,7 @@ class Order(
     }
 
     fun calculateFinalPaymentAmount(coupon: Coupon? = null, pointsToUse: PointBalance? = null): Price {
-        var totalPrice = orderItems.fold(Price.of()) { acc, orderItem -> acc + orderItem.price }
+        var totalPrice = orderItems.sumOfPrices()
 
         if (coupon != null) {
             totalPrice -= coupon.discountAmount

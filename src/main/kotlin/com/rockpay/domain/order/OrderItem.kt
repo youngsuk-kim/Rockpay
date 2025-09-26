@@ -37,8 +37,25 @@ class OrderItem(
     }
 
     fun ship() {
-        require(this.status == PAID) {"결제가 완료 되어야 배송이 가능 합니다"}
+        require(this.status == PAID) { "결제가 완료 되어야 배송이 가능 합니다" }
 
         this.delivery.markAsShipped()
     }
+
+    companion object {
+        fun of(product: Product, quantity: Int, status: OrderItemStatus, delivery: Delivery): OrderItem {
+            return OrderItem(
+                productId = product.id,
+                quantity = quantity,
+                price = product.calculateSalePrice() * quantity,
+                status = status,
+                delivery = delivery
+            )
+        }
+
+        fun List<OrderItem>.sumOfPrices(): Price {
+            return this.fold(Price.of()) { acc, orderItem -> acc + orderItem.price }
+        }
+    }
 }
+

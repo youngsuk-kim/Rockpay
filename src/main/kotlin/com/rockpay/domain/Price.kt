@@ -31,6 +31,10 @@ value class Price(val value: BigDecimal) {
         }
     }
 
+    operator fun times(quantity: Int): Price {
+        return Price(this.value.multiply(BigDecimal.valueOf(quantity.toLong())))
+    }
+
     companion object {
         fun of(): Price = Price(BigDecimal.ZERO)
     }
