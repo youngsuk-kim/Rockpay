@@ -29,6 +29,6 @@ class Point(
         require(amount.value > BigDecimal.ZERO) { "사용할 포인트는 0보다 커야 합니다." }
         require(this.balance >= amount) { "잔액이 부족합니다." }
 
-        this.balance - amount
+        this.balance -= amount
     }
 }

@@ -37,5 +37,6 @@ value class Price(val value: BigDecimal) {
 
     companion object {
         fun of(): Price = Price(BigDecimal.ZERO)
+        fun of(value: Long): Price = Price(BigDecimal.valueOf(value))
     }
 }

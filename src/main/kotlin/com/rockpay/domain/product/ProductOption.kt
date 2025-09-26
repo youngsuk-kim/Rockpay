@@ -17,7 +17,7 @@ class ProductOption(
     var price: Price = price
         private set
 
-    fun decreaseStock(stock: Stock) {
-        stock.decrease()
+    fun decreaseStock() {
+        this.stock = this.stock.decrease()
     }
 }

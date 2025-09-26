@@ -22,5 +22,6 @@ value class PointBalance(val value: BigDecimal) {
 
     companion object {
         fun zero(): PointBalance = PointBalance(BigDecimal.ZERO)
+        fun of(value: Long): PointBalance = PointBalance(BigDecimal.valueOf(value))
     }
 }
