@@ -32,25 +32,13 @@ class OrderItem(
     var delivery: Delivery = delivery
         private set
 
-    private fun copy(
-        status: OrderItemStatus,
-        delivery: Delivery,
-    ): OrderItem {
-        return OrderItem(
-            id = id,
-            productId = productId,
-            quantity = quantity,
-            price = price,
-            status = status,
-            delivery = delivery
-        )
+    fun markAsReturnRequest() {
+        this.status = RETURN_REQUEST
     }
 
-    fun returnRequest(): OrderItem {
-        return copy(status = RETURN_REQUEST, delivery = this.delivery)
-    }
+    fun ship() {
+        require(this.status == PAID) {"결제가 완료 되어야 배송이 가능 합니다"}
 
-    fun shipped(): OrderItem {
-        return copy(status = PAID, delivery = this.delivery.shippedDelivery())
+        this.delivery.markAsShipped()
     }
 }

@@ -19,14 +19,16 @@ class Point(
     var balance: PointBalance = balance
         private set
 
-    fun addPoints(amount: PointBalance): Point {
+    fun addPoints(amount: PointBalance) {
         require(amount.value > BigDecimal.ZERO) { "추가할 포인트는 0보다 커야 합니다." }
-        return Point(id = this.id, buyerId = this.buyerId, balance = this.balance + amount)
+
+        this.balance += amount
     }
 
-    fun usePoints(amount: PointBalance): Point {
+    fun usePoints(amount: PointBalance) {
         require(amount.value > BigDecimal.ZERO) { "사용할 포인트는 0보다 커야 합니다." }
         require(this.balance >= amount) { "잔액이 부족합니다." }
-        return Point(id = this.id, buyerId = this.buyerId, balance = this.balance - amount)
+
+        this.balance - amount
     }
 }

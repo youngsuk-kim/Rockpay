@@ -25,13 +25,11 @@ class PromotionProduct(
     var applied: Boolean = applied
         private set
 
-    fun markApplied(): PromotionProduct {
-        return PromotionProduct(
-            id = this.id,
-            product = this.product,
-            promotion = this.promotion,
-            discountedPrice = this.discountedPrice,
-            applied = true
-        )
+    fun discount(discountedPrice: Price) {
+        this.product.onPromotion(discountedPrice)
+    }
+
+    fun apply() {
+        this.applied = true
     }
 }

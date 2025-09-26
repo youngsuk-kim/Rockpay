@@ -14,8 +14,8 @@ class Delivery(
     var status: DeliveryStatus = status
         private set
 
-    fun shippedDelivery(): Delivery {
-        return Delivery(id, SHIPPED)
+    fun markAsShipped() {
+        this.status = SHIPPED
     }
 
     companion object {

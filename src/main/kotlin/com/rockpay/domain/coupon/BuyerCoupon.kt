@@ -21,10 +21,11 @@ class BuyerCoupon(
     var isUsed: Boolean = isUsed
         private set
 
-    fun useCoupon(): BuyerCoupon {
+    fun useCoupon() {
         if (isUsed) {
             throw IllegalStateException("이미 사용된 쿠폰 입니다.")
         }
-        return BuyerCoupon(id = this.id, couponId = this.couponId, buyerId = this.buyerId, isUsed = true)
+
+        this.isUsed = true
     }
 }

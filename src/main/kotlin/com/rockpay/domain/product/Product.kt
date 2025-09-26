@@ -7,6 +7,7 @@ class Product(
     id: Id<Product> = Id.of(),
     name: String,
     basePrice: Price,
+    promotionPrice: Price,
 ) {
     var id = id
         private set
@@ -17,6 +18,14 @@ class Product(
     var basePrice: Price = basePrice
         private set
 
-    var discountPrice: Price = basePrice
+    var discountPrice: Price = promotionPrice
         private set
+
+    fun onPromotion(promotionPrice: Price) {
+        this.discountPrice = promotionPrice
+    }
+
+    fun calculateSalePrice(): Price {
+        return this.basePrice - this.discountPrice
+    }
 }

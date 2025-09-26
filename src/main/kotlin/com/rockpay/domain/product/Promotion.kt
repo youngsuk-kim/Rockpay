@@ -2,6 +2,9 @@ package com.rockpay.domain.product
 
 import com.rockpay.domain.Id
 import com.rockpay.domain.Price
+import com.rockpay.domain.product.PromotionStatus.FINISHED
+import com.rockpay.domain.product.PromotionStatus.IN_PROGRESS
+import com.rockpay.domain.product.PromotionStatus.PENDING
 import java.time.LocalDateTime
 
 class Promotion(
@@ -10,7 +13,7 @@ class Promotion(
     promotionalPrice: Price,
     startedAt: LocalDateTime,
     endedAt: LocalDateTime,
-    status: PromotionStatus,
+    status: PromotionStatus = PENDING,
 ) {
     var id = id
         private set
@@ -30,14 +33,11 @@ class Promotion(
     var endedAt: LocalDateTime = endedAt
         private set
 
-    fun withStatus(status: PromotionStatus): Promotion {
-        return Promotion(
-            id = this.id,
-            name = this.name,
-            promotionalPrice = this.promotionalPrice,
-            startedAt = this.startedAt,
-            endedAt = this.endedAt,
-            status = status
-        )
+    fun markAsInProgress() {
+        this.status = IN_PROGRESS
+    }
+
+    fun markAsCompleted() {
+        this.status = FINISHED
     }
 }

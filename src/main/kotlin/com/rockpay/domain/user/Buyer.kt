@@ -16,8 +16,8 @@ class Buyer(
     var email: String = email
         private set
 
-    fun changeEmail(newEmail: String): Buyer {
-        return of(name = this.name, email = newEmail)
+    fun updateEmail(newEmail: String) {
+        this.email = newEmail
     }
 
     companion object {
