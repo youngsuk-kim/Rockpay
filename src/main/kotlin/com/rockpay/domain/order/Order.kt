@@ -4,17 +4,17 @@ import com.rockpay.domain.Id
 import com.rockpay.domain.order.OrderStatus.PENDING
 
 class Order(
-    id: Id = Id.of(),
+    id: Id<Order> = Id.of(),
     orderStatus: OrderStatus,
     orderItems: List<OrderItem> = emptyList()
 ) {
-    var id: Id = id
+    var id = id
         private set
 
     var orderStatus: OrderStatus = orderStatus
         private set
 
-    var orderItems: List<OrderItem> = orderItems
+    var orderItems = orderItems
         private set
 
     fun changeOrderStatus(orderStatus: OrderStatus) {

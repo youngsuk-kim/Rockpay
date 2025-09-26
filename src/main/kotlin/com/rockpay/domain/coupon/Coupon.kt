@@ -5,12 +5,12 @@ import com.rockpay.domain.Price
 import java.time.LocalDateTime
 
 class Coupon(
-    id: Id = Id.of(),
+    id: Id<Coupon> = Id.of(),
     name: String,
     discountAmount: Price,
     expirationDate: LocalDateTime
 ) {
-    var id: Id = id
+    var id = id
         private set
 
     var name: String = name

@@ -4,19 +4,20 @@ import com.rockpay.domain.Id
 import com.rockpay.domain.Price
 import com.rockpay.domain.order.OrderItemStatus.PAID
 import com.rockpay.domain.order.OrderItemStatus.RETURN_REQUEST
+import com.rockpay.domain.product.Product
 
 class OrderItem(
-    id: Id = Id.of(),
-    productId: Id,
+    id: Id<OrderItem> = Id.of(),
+    productId: Id<Product>,
     quantity: Int,
     price: Price,
     status: OrderItemStatus,
     delivery: Delivery,
 ) {
-    var id: Id = id
+    var id = id
         private set
 
-    var productId: Id = productId
+    var productId = productId
         private set
 
     var quantity: Int = quantity

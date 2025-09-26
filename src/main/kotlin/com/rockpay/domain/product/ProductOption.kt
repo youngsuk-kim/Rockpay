@@ -4,11 +4,11 @@ import com.rockpay.domain.Id
 import com.rockpay.domain.Price
 
 class ProductOption(
-    id: Id = Id.of(),
+    id: Id<ProductOption> = Id.of(),
     stock: Stock = Stock.of(),
     price: Price = Price.of(),
 ) {
-    var id: Id = id
+    var id = id
         private set
 
     var stock: Stock = stock

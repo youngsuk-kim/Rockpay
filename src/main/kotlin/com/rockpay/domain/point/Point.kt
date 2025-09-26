@@ -3,15 +3,17 @@ package com.rockpay.domain.point
 import com.rockpay.domain.Id
 import java.math.BigDecimal
 
+import com.rockpay.domain.user.Buyer
+
 class Point(
-    id: Id = Id.of(),
-    buyerId: Id,
+    id: Id<Point> = Id.of(),
+    buyerId: Id<Buyer>,
     balance: PointBalance = PointBalance.zero()
 ) {
-    var id: Id = id
+    var id = id
         private set
 
-    var buyerId: Id = buyerId
+    var buyerId = buyerId
         private set
 
     var balance: PointBalance = balance

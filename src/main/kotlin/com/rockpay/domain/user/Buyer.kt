@@ -3,11 +3,11 @@ package com.rockpay.domain.user
 import com.rockpay.domain.Id
 
 class Buyer(
-    id: Id = Id.of(),
+    id: Id<Buyer> = Id.of(),
     name: String,
     email: String
 ) {
-    var id: Id = id
+    var id = id
         private set
 
     var name: String = name
