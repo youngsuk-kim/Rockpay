@@ -1,6 +1,6 @@
 package com.rockpay.domain.order
 
-import com.rockpay.domain.Price
+import com.rockpay.domain.common.Price
 import com.rockpay.domain.order.OrderItem.Companion.sumOfPrices
 import com.rockpay.fixture.order.orderItem
 import com.rockpay.fixture.product.product

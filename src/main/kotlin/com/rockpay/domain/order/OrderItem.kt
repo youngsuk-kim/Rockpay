@@ -1,7 +1,7 @@
 package com.rockpay.domain.order
 
-import com.rockpay.domain.Id
-import com.rockpay.domain.Price
+import com.rockpay.domain.common.Id
+import com.rockpay.domain.common.Price
 import com.rockpay.domain.order.OrderItemStatus.PAID
 import com.rockpay.domain.order.OrderItemStatus.RETURN_REQUEST
 import com.rockpay.domain.product.Product

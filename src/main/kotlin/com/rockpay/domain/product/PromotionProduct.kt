@@ -1,7 +1,7 @@
 package com.rockpay.domain.product
 
-import com.rockpay.domain.Id
-import com.rockpay.domain.Price
+import com.rockpay.domain.common.Id
+import com.rockpay.domain.common.Price
 
 class PromotionProduct(
     id: Id<PromotionProduct> = Id.of(),

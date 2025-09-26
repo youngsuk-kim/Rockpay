@@ -1,6 +1,6 @@
 package com.rockpay.domain.product
 
-import com.rockpay.domain.Price
+import com.rockpay.domain.common.Price
 import com.rockpay.fixture.product.productOption
 import com.rockpay.fixture.product.stock
 import io.kotest.assertions.throwables.shouldThrow

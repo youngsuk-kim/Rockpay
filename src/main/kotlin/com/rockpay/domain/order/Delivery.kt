@@ -1,6 +1,6 @@
 package com.rockpay.domain.order
 
-import com.rockpay.domain.Id
+import com.rockpay.domain.common.Id
 import com.rockpay.domain.order.DeliveryStatus.PENDING
 import com.rockpay.domain.order.DeliveryStatus.SHIPPED
 

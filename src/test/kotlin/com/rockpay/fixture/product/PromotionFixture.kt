@@ -1,6 +1,6 @@
 package com.rockpay.fixture.product
 
-import com.rockpay.domain.Price
+import com.rockpay.domain.common.Price
 import com.rockpay.domain.product.Promotion
 import com.rockpay.domain.product.PromotionStatus
 import java.time.LocalDateTime

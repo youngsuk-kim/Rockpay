@@ -1,4 +1,4 @@
-package com.rockpay.domain
+package com.rockpay.domain.common
 
 @JvmInline
 value class Id<T>(val value: Long) {

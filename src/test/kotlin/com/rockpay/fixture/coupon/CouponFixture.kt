@@ -1,6 +1,6 @@
 package com.rockpay.fixture.coupon
 
-import com.rockpay.domain.Price
+import com.rockpay.domain.common.Price
 import com.rockpay.domain.coupon.Coupon
 import com.rockpay.fixture.now
 import java.time.LocalDateTime

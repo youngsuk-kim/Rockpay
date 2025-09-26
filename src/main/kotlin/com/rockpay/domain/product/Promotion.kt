@@ -1,10 +1,8 @@
 package com.rockpay.domain.product
 
-import com.rockpay.domain.Id
-import com.rockpay.domain.Price
-import com.rockpay.domain.product.PromotionStatus.FINISHED
-import com.rockpay.domain.product.PromotionStatus.IN_PROGRESS
-import com.rockpay.domain.product.PromotionStatus.PENDING
+import com.rockpay.domain.common.Id
+import com.rockpay.domain.common.Price
+import com.rockpay.domain.product.PromotionStatus.*
 import java.time.LocalDateTime
 
 class Promotion(

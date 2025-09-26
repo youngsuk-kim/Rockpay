@@ -1,6 +1,6 @@
 package com.rockpay.domain.product
 
-import com.rockpay.domain.Price
+import com.rockpay.domain.common.Price
 import com.rockpay.fixture.product.product
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe

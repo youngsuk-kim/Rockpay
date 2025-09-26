@@ -1,4 +1,4 @@
-package com.rockpay.domain
+package com.rockpay.domain.common
 
 import com.rockpay.domain.point.PointBalance
 import java.math.BigDecimal
@@ -14,25 +14,24 @@ value class Price(val value: BigDecimal) {
     }
 
     operator fun minus(price: Price): Price {
-        val result = this.value.subtract(price.value)
-        return if (result.signum() < 0) {
-            Price(BigDecimal.ZERO)
-        } else {
-            Price(result)
-        }
+        return subtractAndFloorAtZero(price.value)
     }
 
     operator fun minus(points: PointBalance): Price {
-        val result = this.value.subtract(points.value)
-        return if (result.signum() < 0) {
-            Price(BigDecimal.ZERO)
-        } else {
-            Price(result)
-        }
+        return subtractAndFloorAtZero(points.value)
     }
 
     operator fun times(quantity: Int): Price {
         return Price(this.value.multiply(BigDecimal.valueOf(quantity.toLong())))
+    }
+
+    private fun subtractAndFloorAtZero(amount: BigDecimal): Price {
+        val result = this.value.subtract(amount)
+        return if (result.signum() < 0) {
+            Price(BigDecimal.ZERO)
+        } else {
+            Price(result)
+        }
     }
 
     companion object {

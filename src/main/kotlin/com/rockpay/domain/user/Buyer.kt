@@ -1,6 +1,6 @@
 package com.rockpay.domain.user
 
-import com.rockpay.domain.Id
+import com.rockpay.domain.common.Id
 
 class Buyer(
     id: Id<Buyer> = Id.of(),

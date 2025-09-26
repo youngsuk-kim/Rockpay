@@ -1,6 +1,6 @@
 package com.rockpay.fixture.coupon
 
-import com.rockpay.domain.Id
+import com.rockpay.domain.common.Id
 import com.rockpay.domain.coupon.BuyerCoupon
 import com.rockpay.domain.coupon.Coupon
 import com.rockpay.domain.user.Buyer

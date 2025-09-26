@@ -1,6 +1,6 @@
 package com.rockpay.domain.coupon
 
-import com.rockpay.domain.Id
+import com.rockpay.domain.common.Id
 import com.rockpay.domain.user.Buyer
 
 class BuyerCoupon(

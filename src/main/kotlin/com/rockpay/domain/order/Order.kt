@@ -1,7 +1,7 @@
 package com.rockpay.domain.order
 
-import com.rockpay.domain.Id
-import com.rockpay.domain.Price
+import com.rockpay.domain.common.Id
+import com.rockpay.domain.common.Price
 import com.rockpay.domain.coupon.Coupon
 import com.rockpay.domain.order.OrderItem.Companion.sumOfPrices
 import com.rockpay.domain.order.OrderStatus.PENDING

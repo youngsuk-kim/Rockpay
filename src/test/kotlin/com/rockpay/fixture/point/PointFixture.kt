@@ -1,6 +1,6 @@
 package com.rockpay.fixture.point
 
-import com.rockpay.domain.Id
+import com.rockpay.domain.common.Id
 import com.rockpay.domain.point.Point
 import com.rockpay.domain.point.PointBalance
 import com.rockpay.domain.user.Buyer

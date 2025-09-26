@@ -1,6 +1,6 @@
 package com.rockpay.domain.point
 
-import com.rockpay.domain.Id
+import com.rockpay.domain.common.Id
 import java.math.BigDecimal
 
 import com.rockpay.domain.user.Buyer

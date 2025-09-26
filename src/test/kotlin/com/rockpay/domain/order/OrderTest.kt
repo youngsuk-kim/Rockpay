@@ -1,6 +1,6 @@
 package com.rockpay.domain.order
 
-import com.rockpay.domain.Price
+import com.rockpay.domain.common.Price
 import com.rockpay.domain.point.PointBalance
 import com.rockpay.fixture.coupon.coupon
 import com.rockpay.fixture.order.order

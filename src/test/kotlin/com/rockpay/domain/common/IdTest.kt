@@ -1,4 +1,4 @@
-package com.rockpay.domain
+package com.rockpay.domain.common
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
