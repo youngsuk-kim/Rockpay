@@ -21,12 +21,8 @@ class Order(
         this.orderStatus = orderStatus
     }
 
-    fun pendingOrder(): Order {
-        return Order(this.id, PENDING, this.orderItems)
-    }
-
     companion object {
-        fun createPendingOrder(orderItems: List<OrderItem>): Order {
+        fun of(orderItems: List<OrderItem>): Order {
             return Order(orderStatus = PENDING, orderItems = orderItems)
         }
     }
