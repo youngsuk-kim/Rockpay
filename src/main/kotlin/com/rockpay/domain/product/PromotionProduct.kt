@@ -4,10 +4,11 @@ import com.rockpay.domain.Id
 import com.rockpay.domain.Price
 
 class PromotionProduct(
-    id: Id = Id.of(),
+    id: Id<PromotionProduct> = Id.of(),
     product: Product,
     promotion: Promotion,
-    discountedPrice: Price
+    discountedPrice: Price,
+    applied: Boolean,
 ) {
     var id = id
         private set
@@ -20,4 +21,17 @@ class PromotionProduct(
 
     var discountedPrice: Price = discountedPrice
         private set
+
+    var applied: Boolean = applied
+        private set
+
+    fun markApplied(): PromotionProduct {
+        return PromotionProduct(
+            id = this.id,
+            product = this.product,
+            promotion = this.promotion,
+            discountedPrice = this.discountedPrice,
+            applied = true
+        )
+    }
 }
