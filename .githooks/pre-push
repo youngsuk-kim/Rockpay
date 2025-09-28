@@ -1,0 +1,3 @@
+#!/bin/bash
+
+$GIT_DIR/gradlew test
