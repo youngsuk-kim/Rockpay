@@ -7,9 +7,8 @@ import java.math.BigDecimal
 class Point(
     val id: Id<Point, Long> = Id.of(0L),
     val buyerId: Id<Buyer, Long>,
-    var balance: PointBalance = PointBalance.zero()
+    var balance: PointBalance = PointBalance.zero(),
 ) {
-
     fun addPoints(amount: PointBalance) {
         require(amount.value > BigDecimal.ZERO) { "추가할 포인트는 0보다 커야 합니다." }
 

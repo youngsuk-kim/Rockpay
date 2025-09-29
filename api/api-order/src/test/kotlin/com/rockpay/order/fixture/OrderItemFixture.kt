@@ -12,13 +12,12 @@ fun orderItem(
     quantity: Int = 1,
     price: Price = Price.of(1000),
     status: OrderItemStatus = OrderItemStatus.PAID,
-    delivery: Delivery = Delivery.of()
-): OrderItem {
-    return OrderItem.of(
+    delivery: Delivery = Delivery.of(),
+): OrderItem =
+    OrderItem.of(
         productId = productId,
         quantity = quantity,
         price = price,
         status = status,
-        delivery = delivery
+        delivery = delivery,
     )
-}

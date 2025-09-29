@@ -8,9 +8,7 @@ class Coupon(
     val id: Id<Coupon, Long> = Id.of(0L),
     val name: String,
     val discountAmount: Price,
-    val expirationDate: LocalDateTime
+    val expirationDate: LocalDateTime,
 ) {
-    fun isExpired(now: LocalDateTime): Boolean {
-        return now.isAfter(expirationDate)
-    }
+    fun isExpired(now: LocalDateTime): Boolean = now.isAfter(expirationDate)
 }

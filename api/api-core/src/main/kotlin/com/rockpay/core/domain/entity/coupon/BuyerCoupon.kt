@@ -7,9 +7,8 @@ class BuyerCoupon(
     val id: Id<BuyerCoupon, Long> = Id.of(0L),
     val couponId: Id<Coupon, Long>,
     val buyerId: Id<Buyer, Long>,
-    var isUsed: Boolean = false
+    var isUsed: Boolean = false,
 ) {
-
     fun useCoupon() {
         if (isUsed) {
             throw IllegalStateException("이미 사용된 쿠폰 입니다.")

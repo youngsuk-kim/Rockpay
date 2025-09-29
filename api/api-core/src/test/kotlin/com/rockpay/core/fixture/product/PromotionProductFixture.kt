@@ -9,12 +9,11 @@ fun promotionProduct(
     product: Product = product(),
     promotion: Promotion = promotion(),
     discountedPrice: Price = Price.of(1000),
-    applied: Boolean = false
-): PromotionProduct {
-    return PromotionProduct(
+    applied: Boolean = false,
+): PromotionProduct =
+    PromotionProduct(
         product = product,
         promotion = promotion,
         discountedPrice = discountedPrice,
-        applied = applied
+        applied = applied,
     )
-}

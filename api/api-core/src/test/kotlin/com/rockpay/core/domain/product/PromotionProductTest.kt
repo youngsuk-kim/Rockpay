@@ -6,38 +6,39 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import java.math.BigDecimal
 
-class PromotionProductTest : StringSpec({
+class PromotionProductTest :
+    StringSpec({
 
-    "프로모션 상품 생성 시 applied는 false 이다" {
-        // given
-        val promotionProduct = promotionProduct(applied = false)
+        "프로모션 상품 생성 시 applied는 false 이다" {
+            // given
+            val promotionProduct = promotionProduct(applied = false)
 
-        // when
-        val applied = promotionProduct.applied
+            // when
+            val applied = promotionProduct.applied
 
-        // then
-        applied shouldBe false
-    }
+            // then
+            applied shouldBe false
+        }
 
-    "할인 금액으로 상품의 할인 금액을 업데이트한다" {
-        // given
-        val promotionProduct = promotionProduct()
+        "할인 금액으로 상품의 할인 금액을 업데이트한다" {
+            // given
+            val promotionProduct = promotionProduct()
 
-        // when
-        promotionProduct.discount(Price.of(2500))
+            // when
+            promotionProduct.discount(Price.of(2500))
 
-        // then
-        promotionProduct.product.discountAmount.value shouldBe BigDecimal.valueOf(2500)
-    }
+            // then
+            promotionProduct.product.discountAmount.value shouldBe BigDecimal.valueOf(2500)
+        }
 
-    "apply() 호출 시 applied는 true가 된다" {
-        // given
-        val promotionProduct = promotionProduct(applied = false)
+        "apply() 호출 시 applied는 true가 된다" {
+            // given
+            val promotionProduct = promotionProduct(applied = false)
 
-        // when
-        promotionProduct.apply()
+            // when
+            promotionProduct.apply()
 
-        // then
-        promotionProduct.applied shouldBe true
-    }
-})
+            // then
+            promotionProduct.applied shouldBe true
+        }
+    })

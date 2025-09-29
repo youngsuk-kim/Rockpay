@@ -16,9 +16,7 @@ class OrderItem(
     var id = id
         private set
 
-    fun getTotalPrice(): Price {
-        return price * quantity
-    }
+    fun getTotalPrice(): Price = price * quantity
 
     fun markAsReturnRequest() {
         this.status = OrderItemStatus.RETURN_REQUEST
@@ -31,18 +29,21 @@ class OrderItem(
     }
 
     companion object {
-        fun of(productId: ExternalId<Long>, quantity: Int, price: Price, status: OrderItemStatus, delivery: Delivery): OrderItem {
-            return OrderItem(
+        fun of(
+            productId: ExternalId<Long>,
+            quantity: Int,
+            price: Price,
+            status: OrderItemStatus,
+            delivery: Delivery,
+        ): OrderItem =
+            OrderItem(
                 productId = productId,
                 quantity = quantity,
                 price = price,
                 status = status,
-                delivery = delivery
+                delivery = delivery,
             )
-        }
 
-        fun List<OrderItem>.sumOfPrices(): Price {
-            return this.fold(Price.of()) { acc, orderItem -> acc + orderItem.getTotalPrice() }
-        }
+        fun List<OrderItem>.sumOfPrices(): Price = this.fold(Price.of()) { acc, orderItem -> acc + orderItem.getTotalPrice() }
     }
 }

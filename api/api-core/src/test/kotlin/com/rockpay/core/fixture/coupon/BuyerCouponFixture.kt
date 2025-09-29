@@ -5,10 +5,13 @@ import com.rockpay.core.domain.entity.coupon.BuyerCoupon
 import com.rockpay.core.domain.entity.coupon.Coupon
 import com.rockpay.core.domain.entity.user.Buyer
 
-fun buyerCoupon(couponId: Id<Coupon, Long> = Id.of(0), buyerId: Id<Buyer, Long> = Id.of(0), isUsed: Boolean = false): BuyerCoupon {
-    return BuyerCoupon(
+fun buyerCoupon(
+    couponId: Id<Coupon, Long> = Id.of(0),
+    buyerId: Id<Buyer, Long> = Id.of(0),
+    isUsed: Boolean = false,
+): BuyerCoupon =
+    BuyerCoupon(
         couponId = couponId,
         buyerId = buyerId,
-        isUsed = isUsed
+        isUsed = isUsed,
     )
-}

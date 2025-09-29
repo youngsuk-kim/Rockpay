@@ -11,7 +11,6 @@ import java.util.concurrent.Executor
 @Configuration
 @EnableAsync
 class AsyncConfig : AsyncConfigurer {
-
     @Bean
     override fun getAsyncExecutor(): Executor {
         val executor = ThreadPoolTaskExecutor()
@@ -23,7 +22,5 @@ class AsyncConfig : AsyncConfigurer {
         return executor
     }
 
-    override fun getAsyncUncaughtExceptionHandler(): AsyncUncaughtExceptionHandler {
-        return AsyncExceptionHandler()
-    }
+    override fun getAsyncUncaughtExceptionHandler(): AsyncUncaughtExceptionHandler = AsyncExceptionHandler()
 }

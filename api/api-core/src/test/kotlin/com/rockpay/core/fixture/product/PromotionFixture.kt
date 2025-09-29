@@ -10,13 +10,12 @@ fun promotion(
     promotionalPrice: Price = Price.of(1000),
     startedAt: LocalDateTime = LocalDateTime.of(2022, 1, 1, 0, 0, 0),
     endedAt: LocalDateTime = LocalDateTime.of(2022, 1, 1, 0, 0, 0).plusDays(1),
-    status: PromotionStatus = PromotionStatus.PENDING
-): Promotion {
-    return Promotion(
+    status: PromotionStatus = PromotionStatus.PENDING,
+): Promotion =
+    Promotion(
         name = name,
         promotionalPrice = promotionalPrice,
         startedAt = startedAt,
         endedAt = endedAt,
-        status = status
+        status = status,
     )
-}

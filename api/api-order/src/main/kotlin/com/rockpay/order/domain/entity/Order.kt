@@ -9,7 +9,7 @@ import com.rockpay.order.domain.entity.OrderItem.Companion.sumOfPrices
 class Order(
     id: Id<Order, Long> = Id.of(0),
     orderStatus: OrderStatus,
-    orderItems: List<OrderItem> = emptyList()
+    orderItems: List<OrderItem> = emptyList(),
 ) {
     var id = id
         private set
@@ -27,14 +27,15 @@ class Order(
         this.orderStatus = OrderStatus.PAID
     }
 
-    fun calculateFinalPaymentAmount(couponDiscount: Price = Price.of(0), pointsToUse: Price = Price.of(0)): Price {
+    fun calculateFinalPaymentAmount(
+        couponDiscount: Price = Price.of(0),
+        pointsToUse: Price = Price.of(0),
+    ): Price {
         val totalAmount = orderItems.sumOfPrices()
         return totalAmount - couponDiscount - pointsToUse
     }
 
     companion object {
-        fun of(orderItems: List<OrderItem>): Order {
-            return Order(orderStatus = PENDING, orderItems = orderItems)
-        }
+        fun of(orderItems: List<OrderItem>): Order = Order(orderStatus = PENDING, orderItems = orderItems)
     }
 }

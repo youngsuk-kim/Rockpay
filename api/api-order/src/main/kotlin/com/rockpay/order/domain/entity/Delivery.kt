@@ -19,8 +19,6 @@ class Delivery(
     }
 
     companion object {
-        fun of(status: DeliveryStatus = PENDING): Delivery {
-            return Delivery(Id.of(0), status)
-        }
+        fun of(status: DeliveryStatus = PENDING): Delivery = Delivery(Id.of(0), status)
     }
 }

@@ -6,10 +6,9 @@ import com.rockpay.order.domain.entity.OrderItem
 
 fun order(
     orderStatus: OrderStatus = OrderStatus.PENDING,
-    orderItems: List<OrderItem> = listOf(orderItem())
-): Order {
-    return Order(
+    orderItems: List<OrderItem> = listOf(orderItem()),
+): Order =
+    Order(
         orderStatus = orderStatus,
-        orderItems = orderItems
+        orderItems = orderItems,
     )
-}

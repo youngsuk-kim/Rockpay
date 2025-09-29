@@ -9,7 +9,11 @@ import java.lang.reflect.Method
 class AsyncExceptionHandler : AsyncUncaughtExceptionHandler {
     private val log = LoggerFactory.getLogger(javaClass)
 
-    override fun handleUncaughtException(e: Throwable, method: Method, vararg params: Any?) {
+    override fun handleUncaughtException(
+        e: Throwable,
+        method: Method,
+        vararg params: Any?,
+    ) {
         if (e is CoreException) {
             when (e.errorType.logLevel) {
                 LogLevel.ERROR -> log.error("CoreException : {}", e.message, e)
