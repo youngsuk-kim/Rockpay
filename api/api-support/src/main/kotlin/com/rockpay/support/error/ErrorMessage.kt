@@ -1,6 +1,6 @@
 package com.rockpay.support.error
 
-data class ErrorMessage private constructor(
+data class ErrorMessage(
     val code: String,
     val message: String,
     val data: Any? = null,
