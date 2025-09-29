@@ -1,3 +1,6 @@
+val kotestVersion = "5.9.1"
+val archunitVersion = "1.3.0"
+
 plugins {
     kotlin("jvm") version "1.9.25"
     kotlin("plugin.spring") version "1.9.25"
@@ -31,6 +34,9 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
+    testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
+    testImplementation("com.tngtech.archunit:archunit-junit5:$archunitVersion")
 
     // spring mvc
     implementation("org.springframework.boot:spring-boot-starter-web")
