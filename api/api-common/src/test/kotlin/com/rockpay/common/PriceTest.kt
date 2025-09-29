@@ -1,5 +1,6 @@
-package com.rockpay.domain.common
+package com.rockpay.common
 
+import com.rockpay.common.vo.Price
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import java.math.BigDecimal

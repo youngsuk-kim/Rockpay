@@ -1,6 +1,5 @@
-package com.rockpay.domain.common
+package com.rockpay.common.vo
 
-import com.rockpay.domain.point.PointBalance
 import java.math.BigDecimal
 
 @JvmInline
@@ -15,10 +14,6 @@ value class Price(val value: BigDecimal) {
 
     operator fun minus(price: Price): Price {
         return subtractAndFloorAtZero(price.value)
-    }
-
-    operator fun minus(points: PointBalance): Price {
-        return subtractAndFloorAtZero(points.value)
     }
 
     operator fun times(quantity: Int): Price {
