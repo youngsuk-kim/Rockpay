@@ -1,5 +1,7 @@
-package com.rockpay.domain.order
+package com.rockpay.order.domain
 
+import com.rockpay.common.enums.order.DeliveryStatus
+import com.rockpay.order.domain.entity.Delivery
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 

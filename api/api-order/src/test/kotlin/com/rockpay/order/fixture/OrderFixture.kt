@@ -1,8 +1,8 @@
-package com.rockpay.fixture.order
+package com.rockpay.order.fixture
 
-import com.rockpay.domain.order.Order
-import com.rockpay.domain.order.OrderItem
-import com.rockpay.domain.order.OrderStatus
+import com.rockpay.common.enums.order.OrderStatus
+import com.rockpay.order.domain.entity.Order
+import com.rockpay.order.domain.entity.OrderItem
 
 fun order(
     orderStatus: OrderStatus = OrderStatus.PENDING,
