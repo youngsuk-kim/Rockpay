@@ -1,8 +1,9 @@
 package com.rockpay.domain.common
 
-@JvmInline
-value class Id<T>(val value: Long) {
+data class Id<T, V>(val value: V) {
     companion object {
-        fun <T> of(id: Long = 0L) = Id<T>(id)
+        fun <T> of(): Id<T, Long> {
+            return Id(0L)
+        }
     }
 }

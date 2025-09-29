@@ -4,9 +4,9 @@ import com.rockpay.domain.common.Id
 import com.rockpay.domain.user.Buyer
 
 class BuyerCoupon(
-    id: Id<BuyerCoupon> = Id.of(),
-    couponId: Id<Coupon>,
-    buyerId: Id<Buyer>,
+    id: Id<BuyerCoupon, Long> = Id.of(),
+    couponId: Id<Coupon, Long>,
+    buyerId: Id<Buyer, Long>,
     isUsed: Boolean = false
 ) {
     var id= id
@@ -23,7 +23,7 @@ class BuyerCoupon(
 
     fun useCoupon() {
         if (isUsed) {
-            throw IllegalStateException("이미 사용된 쿠폰 입니다.")
+            throw IllegalStateException("이미 사용된 쿠폰입니다.")
         }
 
         this.isUsed = true

@@ -5,7 +5,7 @@ import com.rockpay.domain.common.Price
 import java.time.LocalDateTime
 
 class Coupon(
-    id: Id<Coupon> = Id.of(),
+    id: Id<Coupon, Long> = Id.of(),
     name: String,
     discountAmount: Price,
     expirationDate: LocalDateTime

@@ -5,7 +5,7 @@ import com.rockpay.domain.order.DeliveryStatus.PENDING
 import com.rockpay.domain.order.DeliveryStatus.SHIPPED
 
 class Delivery(
-    id: Id<Delivery> = Id.of(),
+    id: Id<Delivery, Long> = Id.of(),
     status: DeliveryStatus = PENDING,
 ) {
     var id = id

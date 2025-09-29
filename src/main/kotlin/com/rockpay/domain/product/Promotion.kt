@@ -6,7 +6,7 @@ import com.rockpay.domain.product.PromotionStatus.*
 import java.time.LocalDateTime
 
 class Promotion(
-    id: Id<Promotion> = Id.of(),
+    id: Id<Promotion, Long> = Id(0L),
     name: String,
     promotionalPrice: Price,
     startedAt: LocalDateTime,

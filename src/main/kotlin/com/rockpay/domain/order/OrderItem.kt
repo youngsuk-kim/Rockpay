@@ -7,8 +7,8 @@ import com.rockpay.domain.order.OrderItemStatus.RETURN_REQUEST
 import com.rockpay.domain.product.Product
 
 class OrderItem(
-    id: Id<OrderItem> = Id.of(),
-    productId: Id<Product>,
+    id: Id<OrderItem, Long> = Id(0L),
+    productId: Id<Product, Long>,
     quantity: Int,
     price: Price,
     status: OrderItemStatus,
@@ -37,7 +37,7 @@ class OrderItem(
     }
 
     fun ship() {
-        require(this.status == PAID) { "결제가 완료 되어야 배송이 가능 합니다" }
+        require(this.status == PAID) { "결제가 완료되어야 배송이 가능합니다" }
 
         this.delivery.markAsShipped()
     }
@@ -49,7 +49,7 @@ class OrderItem(
                 quantity = quantity,
                 price = product.calculateSalePrice() * quantity,
                 status = status,
-                delivery = delivery
+                delivery = delivery,
             )
         }
 
@@ -58,4 +58,3 @@ class OrderItem(
         }
     }
 }
-

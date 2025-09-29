@@ -8,7 +8,7 @@ import com.rockpay.domain.order.OrderStatus.PENDING
 import com.rockpay.domain.point.PointBalance
 
 class Order(
-    id: Id<Order> = Id.of(),
+    id: Id<Order, Long> = Id(0L),
     orderStatus: OrderStatus,
     orderItems: List<OrderItem> = emptyList()
 ) {

@@ -3,7 +3,7 @@ package com.rockpay.domain.user
 import com.rockpay.domain.common.Id
 
 class Buyer(
-    id: Id<Buyer> = Id.of(),
+    id: Id<Buyer, Long> = Id.of(),
     name: String,
     email: String
 ) {
@@ -22,7 +22,7 @@ class Buyer(
 
     companion object {
         fun of(name: String, email: String): Buyer {
-            return Buyer(name = name, email =  email)
+            return Buyer(name = name, email = email)
         }
     }
 }

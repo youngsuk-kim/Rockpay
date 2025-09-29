@@ -4,7 +4,7 @@ import com.rockpay.domain.common.Id
 import com.rockpay.domain.common.Price
 
 class ProductOption(
-    id: Id<ProductOption> = Id.of(),
+    id: Id<ProductOption, Long> = Id(0L),
     stock: Stock = Stock.of(),
     price: Price = Price.of(),
 ) {
