@@ -5,6 +5,9 @@ include(
     "api:api-order",
     "api:api-common",
     "api:api-support",
+    "storage:db-core",
+    "storage:db-order",
+    "clients:client-example"
 )
 
 pluginManagement {
