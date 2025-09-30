@@ -7,6 +7,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement
 
 @Configuration
 @EnableTransactionManagement
-@EntityScan(basePackages = ["com.rockpay.storage.db.core"])
-@EnableJpaRepositories(basePackages = ["com.rockpay.storage.db.core"])
+@EntityScan(basePackages = ["com.rockpay.storage.db.order"])
+@EnableJpaRepositories(basePackages = ["com.rockpay.storage.db.order"])
 internal class CoreJpaConfig
