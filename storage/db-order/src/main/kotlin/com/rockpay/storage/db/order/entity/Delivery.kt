@@ -1,4 +1,4 @@
-package com.rockpay.order.domain.entity
+package com.rockpay.storage.db.order.entity
 
 import com.rockpay.common.enums.order.DeliveryStatus
 import com.rockpay.common.enums.order.DeliveryStatus.PENDING

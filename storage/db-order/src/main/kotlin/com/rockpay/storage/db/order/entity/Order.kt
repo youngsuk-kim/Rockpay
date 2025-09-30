@@ -1,10 +1,10 @@
-package com.rockpay.order.domain.entity
+package com.rockpay.storage.db.order.entity
 
 import com.rockpay.common.enums.order.OrderStatus
 import com.rockpay.common.enums.order.OrderStatus.PENDING
 import com.rockpay.common.vo.Id
 import com.rockpay.common.vo.Price
-import com.rockpay.order.domain.entity.OrderItem.Companion.sumOfPrices
+import com.rockpay.storage.db.order.entity.OrderItem.Companion.sumOfPrices
 
 class Order(
     id: Id<Order, Long> = Id.of(0),

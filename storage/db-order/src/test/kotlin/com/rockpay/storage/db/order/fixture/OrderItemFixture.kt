@@ -1,11 +1,11 @@
-package com.rockpay.order.fixture
+package com.rockpay.storage.db.order.fixture
 
 import com.rockpay.common.enums.order.OrderItemStatus
 import com.rockpay.common.vo.ExternalId
 import com.rockpay.common.vo.Id
 import com.rockpay.common.vo.Price
-import com.rockpay.order.domain.entity.Delivery
-import com.rockpay.order.domain.entity.OrderItem
+import com.rockpay.storage.db.order.entity.Delivery
+import com.rockpay.storage.db.order.entity.OrderItem
 
 fun orderItem(
     productId: ExternalId<Long> = Id.ofExternal(1L),

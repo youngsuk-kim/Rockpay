@@ -1,10 +1,10 @@
-package com.rockpay.order.domain
+package com.rockpay.storage.db.order.domain
 
 import com.rockpay.common.enums.order.OrderStatus
 import com.rockpay.common.vo.Id
 import com.rockpay.common.vo.Price
-import com.rockpay.order.fixture.order
-import com.rockpay.order.fixture.orderItem
+import com.rockpay.storage.db.order.fixture.order
+import com.rockpay.storage.db.order.fixture.orderItem
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe

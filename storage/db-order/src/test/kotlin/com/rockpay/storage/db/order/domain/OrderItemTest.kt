@@ -1,12 +1,12 @@
-package com.rockpay.order.domain
+package com.rockpay.storage.db.order.domain
 
 import com.rockpay.common.enums.order.DeliveryStatus
 import com.rockpay.common.enums.order.OrderItemStatus
 import com.rockpay.common.vo.Id
 import com.rockpay.common.vo.Price
-import com.rockpay.order.domain.entity.Delivery
-import com.rockpay.order.domain.entity.OrderItem.Companion.sumOfPrices
-import com.rockpay.order.fixture.orderItem
+import com.rockpay.storage.db.order.entity.Delivery
+import com.rockpay.storage.db.order.entity.OrderItem.Companion.sumOfPrices
+import com.rockpay.storage.db.order.fixture.orderItem
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
