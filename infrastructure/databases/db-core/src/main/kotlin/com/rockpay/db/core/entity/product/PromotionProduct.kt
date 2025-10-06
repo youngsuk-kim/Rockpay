@@ -22,7 +22,6 @@ class PromotionProduct(
     discountedPrice: Price,
     applied: Boolean = false,
 ) {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id = id

@@ -6,9 +6,9 @@ import org.hibernate.annotations.UpdateTimestamp
 import java.time.LocalDateTime
 
 @Embeddable
-class Auditing (
+class Auditing(
     createdAt: LocalDateTime = LocalDateTime.MIN,
-    updatedAt: LocalDateTime = LocalDateTime.MIN
+    updatedAt: LocalDateTime = LocalDateTime.MIN,
 ) {
     @CreationTimestamp
     var createdAt: LocalDateTime = createdAt
