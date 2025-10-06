@@ -1,63 +1,69 @@
-val kotestVersion = "5.9.1"
-val archunitVersion = "1.3.0"
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.9.25"
-    kotlin("plugin.spring") version "1.9.25"
-    id("org.springframework.boot") version "3.5.5"
-    id("io.spring.dependency-management") version "1.1.7"
-    id("org.jlleitschuh.gradle.ktlint") version "13.1.0"
+    kotlin("jvm")
+    kotlin("kapt")
+    kotlin("plugin.spring") apply false
+    kotlin("plugin.jpa") apply false
+    id("org.springframework.boot") apply false
+    id("io.spring.dependency-management")
+    id("org.jlleitschuh.gradle.ktlint") apply false
 }
 
-group = "com.rockpay"
-version = "0.0.1-SNAPSHOT"
-description = "RockPay"
+allprojects {
+    group = property("projectGroup") as String
+    version = property("applicationVersion") as String
 
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+    repositories {
+        mavenCentral()
     }
 }
 
-repositories {
-    mavenCentral()
-}
+subprojects {
+    apply(plugin = "org.jetbrains.kotlin.jvm")
+    apply(plugin = "org.jetbrains.kotlin.kapt")
+    apply(plugin = "org.jetbrains.kotlin.plugin.spring")
+    apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
+    apply(plugin = "org.springframework.boot")
+    apply(plugin = "io.spring.dependency-management")
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
 
-// dependency versions
-val koTestVersion = "6.0.3"
-val mockkVersion = "1.14.5"
-
-dependencies {
-    implementation("org.springframework.boot:spring-boot-starter")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-    testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
-    testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
-    testImplementation("com.tngtech.archunit:archunit-junit5:$archunitVersion")
-
-    // spring mvc
-    implementation("org.springframework.boot:spring-boot-starter-web")
-
-    // spring jpa
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-
-    // h2 database
-    runtimeOnly("com.h2database:h2")
-
-    // kotlin test
-    testImplementation("io.kotest:kotest-assertions-core:$koTestVersion")
-    testImplementation("io.mockk:mockk:${mockkVersion}")
-}
-
-kotlin {
-    compilerOptions {
-        freeCompilerArgs.addAll("-Xjsr305=strict")
+    dependencyManagement {
+        imports {
+            mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudDependenciesVersion")}")
+        }
     }
-}
 
-tasks.withType<Test> {
-    useJUnitPlatform()
+    // Java Toolchain 설정을 통해 Java 버전을 안정적으로 지정합니다.
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(property("javaVersion") as String))
+        }
+    }
+
+    dependencies {
+        implementation("org.jetbrains.kotlin:kotlin-reflect")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+        testImplementation("org.springframework.boot:spring-boot-starter-test")
+        testImplementation("com.ninja-squad:springmockk:${property("springMockkVersion")}")
+        annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+        testImplementation("io.kotest:kotest-runner-junit5:${property("koTestVersion")}")
+        testImplementation("io.kotest:kotest-assertions-core:${property("koTestVersion")}")
+        testImplementation("com.tngtech.archunit:archunit-junit5:${property("archunitVersion")}")
+    }
+
+    tasks.getByName("bootJar") {
+        enabled = false
+    }
+
+    tasks.getByName("jar") {
+        enabled = true
+    }
+
+    tasks.withType<KotlinCompile> {
+        kotlinOptions {
+            freeCompilerArgs = listOf("-Xjsr305=strict")
+        }
+    }
 }
