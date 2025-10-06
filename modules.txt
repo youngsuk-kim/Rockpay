@@ -1,0 +1,67 @@
+# V1
+- 단점
+    - common이 2개 생길 수 있음 (api 내부, 외부)
+    - kakfa를 storage에 넣기에는 애매함, kafka를 넣기위해 모듈을 하나 더 넣어야할 수 있음
+
+api
+    - api-common
+    - api-core
+    - api-order
+    - api-support
+clients
+storage
+    - db-core
+    - db-order
+
+---
+# V2
+- 장점
+    - api의 구현체를 다르게 가져갈 수 있음 (graphql, grpc)
+- 단점
+    - 레이어의 세분화로 인해 개발 생산성 낮춤 (usecase, application)
+
+batch
+api
+- support
+    - GlobalExceptionHandler
+- core
+- order
+    - controller
+        - v1
+            - XXXController
+    - usecase
+        - XXXUseCase (interface)
+application
+    - XXXService implements XXXUseCase
+domain (jpa entity)
+    - order (module)
+        - Order
+        - OrderItem
+infrastructure
+    - kafka
+    - redis
+common
+clients
+    - toss
+
+---
+# V3
+
+features
+- support
+    - GlobalExceptionHandler
+- core
+    - XXXController
+    - XXXService
+    - XXXRepository (interface)
+- order
+domain (jpa entity)
+    - order (module)
+        - Order
+        - OrderItem
+infrastructure
+    - kafka
+    - redis
+common
+clients
+    - toss

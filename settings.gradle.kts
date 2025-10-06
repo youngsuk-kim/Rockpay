@@ -1,12 +1,14 @@
 rootProject.name = "Rockpay"
 
 include(
-    "api:api-core",
-    "api:api-order",
-    "api:api-common",
-    "api:api-support",
-    "storage:db-core",
-    "storage:db-order",
+    "common",
+    "apis:api-core",
+    "apis:api-order",
+    "apis:api-support",
+    "applications:app-core",
+    "applications:app-order",
+    "infrastructure:databases:db-core",
+    "infrastructure:databases:db-order",
     "clients:client-example"
 )
 
