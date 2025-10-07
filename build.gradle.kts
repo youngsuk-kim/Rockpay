@@ -34,7 +34,6 @@ subprojects {
         }
     }
 
-    // Java Toolchain 설정을 통해 Java 버전을 안정적으로 지정합니다.
     java {
         toolchain {
             languageVersion.set(JavaLanguageVersion.of(property("javaVersion") as String))

@@ -5,6 +5,7 @@ include(
     "apis:api-core",
     "apis:api-order",
     "apis:api-support",
+    "apis:api-docs",
     "applications:app-core",
     "applications:app-order",
     "infrastructure:databases:db-core",
