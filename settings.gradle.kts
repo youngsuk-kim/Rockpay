@@ -9,6 +9,7 @@ include(
     "applications:app-order",
     "infrastructure:databases:db-core",
     "infrastructure:databases:db-order",
+    "infrastructure:databases:db-support",
     "clients:client-example"
 )
 

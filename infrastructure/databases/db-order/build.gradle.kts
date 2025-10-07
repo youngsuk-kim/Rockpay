@@ -12,5 +12,7 @@ tasks.getByName("jar") {
 
 dependencies {
     implementation(project(":common"))
+    implementation(project(":infrastructure:databases:db-support"))
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    runtimeOnly("com.h2database:h2")
 }
