@@ -1,6 +1,0 @@
-package com.rockpay.api.order.controller
-
-import org.springframework.web.bind.annotation.RestController
-
-@RestController
-class OrderController

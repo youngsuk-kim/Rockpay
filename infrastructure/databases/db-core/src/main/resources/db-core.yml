@@ -7,7 +7,7 @@ spring:
       hibernate.default_batch_fetch_size: 100
 
 ---
-spring.config.activate.on-profile: local
+spring.config.activate.on-profile: local, default
 
 spring:
   jpa:
@@ -21,7 +21,7 @@ spring:
     console:
       enabled: true
 
-storage:
+database:
   datasource:
     core:
       driver-class-name: org.h2.Driver
@@ -41,7 +41,7 @@ spring:
         format_sql: true
         show_sql: true
 
-storage:
+database:
   datasource:
     core:
       driver-class-name: com.mysql.cj.jdbc.Driver

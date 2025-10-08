@@ -1,0 +1,24 @@
+주문 대기
+    - 대기 상태 주문 생성 (PENDING)
+        - 주문 아이디 생성
+        - 주문 아이템 생성 (PENDING)
+            - 상품 아이템 조회 api 호출 (product-service)
+    - 실패 시
+        - 디비에 히스토리 저장
+
+
+api
+- core
+- order
+app
+- core
+- order
+infrastructure
+- core
+- order
+
+
+module-order
+- batch
+- api
+module-core

@@ -1,17 +1,18 @@
 rootProject.name = "Rockpay"
 
 include(
-    "common",
     "apis:api-core",
     "apis:api-order",
-    "apis:api-support",
     "apis:api-docs",
     "applications:app-core",
     "applications:app-order",
+    "domain:domain-order",
+    "domain:domain-core",
+    "domain:domain-support",
     "infrastructure:databases:db-core",
     "infrastructure:databases:db-order",
-    "infrastructure:databases:db-support",
-    "clients:client-example"
+    "clients:client-example",
+    "clients:client-product"
 )
 
 pluginManagement {
