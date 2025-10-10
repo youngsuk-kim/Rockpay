@@ -1,2 +1,9 @@
 server:
   port: 8081
+
+spring:
+  config:
+    import:
+      - optional:classpath:db-order.yml
+      - optional:classpath:messaging.yml
+      - optional:classpath:client-product.yml

@@ -1,6 +1,7 @@
 package com.rockpay.core.app
 
 import com.rockpay.core.domain.entity.product.Product
+import com.rockpay.support.domain.Price.Companion.toDisplayPrice
 
 data class GetProductQueryResult(
     val id: Long,
@@ -13,8 +14,8 @@ data class GetProductQueryResult(
             GetProductQueryResult(
                 id = product.id,
                 name = product.name,
-                basePrice = product.basePrice.toString(),
-                salePrice = product.basePrice.toString(),
+                basePrice = toDisplayPrice(product.basePrice),
+                salePrice = toDisplayPrice(product.calculateSalePrice()),
             )
     }
 }

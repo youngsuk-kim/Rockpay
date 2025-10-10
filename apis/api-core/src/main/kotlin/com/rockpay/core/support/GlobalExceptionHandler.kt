@@ -1,6 +1,7 @@
 package com.rockpay.core.support
 
 import com.rockpay.core.domain.exception.CoreException
+import com.rockpay.core.support.error.ErrorResponse
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler

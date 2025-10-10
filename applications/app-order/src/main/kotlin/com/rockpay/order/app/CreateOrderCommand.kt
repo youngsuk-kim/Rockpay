@@ -1,3 +1,6 @@
 package com.rockpay.order.app
 
-class CreateOrderCommand
+data class CreateOrderCommand(
+    val productIds: List<Long>,
+    val quantities: List<Int>,
+)

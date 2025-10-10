@@ -4,13 +4,15 @@ spring:
     hibernate:
       ddl-auto: validate
     properties:
-      hibernate.default_batch_fetch_size: 100
+      hibernate:
+        default_batch_fetch_size: 100
 
 ---
 spring.config.activate.on-profile: local, default
 
 spring:
   jpa:
+    defer-datasource-initialization: true
     hibernate:
       ddl-auto: create
     properties:

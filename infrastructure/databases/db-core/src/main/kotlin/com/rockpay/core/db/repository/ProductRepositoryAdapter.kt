@@ -9,4 +9,6 @@ class ProductRepositoryAdapter(
     private val productJpaRepository: ProductJpaRepository,
 ) : ProductRepository {
     override fun findById(id: Long): Product? = productJpaRepository.findProductById(id)
+
+    override fun findAllByIds(ids: List<Long>): List<Product> = productJpaRepository.findAllById(ids)
 }

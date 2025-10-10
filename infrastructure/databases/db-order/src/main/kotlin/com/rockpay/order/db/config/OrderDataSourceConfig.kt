@@ -11,10 +11,10 @@ import org.springframework.context.annotation.Configuration
 internal class OrderDataSourceConfig {
     @Bean
     @ConfigurationProperties(prefix = "database.datasource.order")
-    fun coreHikariConfig(): HikariConfig = HikariConfig()
+    fun orderHikariConfig(): HikariConfig = HikariConfig()
 
     @Bean
-    fun coreDataSource(
-        @Qualifier("coreHikariConfig") config: HikariConfig,
+    fun orderDataSource(
+        @Qualifier("orderHikariConfig") config: HikariConfig,
     ): HikariDataSource = HikariDataSource(config)
 }

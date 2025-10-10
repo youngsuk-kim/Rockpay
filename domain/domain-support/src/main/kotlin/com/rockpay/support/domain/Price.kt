@@ -27,5 +27,7 @@ value class Price(
         fun of(): Price = Price(BigDecimal.ZERO)
 
         fun of(value: Long): Price = Price(BigDecimal.valueOf(value))
+
+        fun toDisplayPrice(price: Price): String = price.value.longValueExact().toString()
     }
 }

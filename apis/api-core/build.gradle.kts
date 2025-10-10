@@ -8,6 +8,7 @@ tasks.getByName("jar") {
 
 dependencies {
     runtimeOnly(project(":infrastructure:databases:db-core"))
+    runtimeOnly(project(":infrastructure:messaging"))
     implementation(project(":applications:app-core"))
     implementation(project(":domain:domain-core"))
     implementation(project(":domain:domain-support"))

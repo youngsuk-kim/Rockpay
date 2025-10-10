@@ -11,7 +11,7 @@ import jakarta.persistence.Id
 import jakarta.persistence.Table
 
 @Entity
-@Table(name = "product")
+@Table(name = "products")
 class Product(
     id: Long = 0L,
     name: String,

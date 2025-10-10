@@ -75,6 +75,28 @@ class OrderItem(
                 delivery = delivery,
             )
 
+        /**
+         * 상품 ID 목록, 수량 목록, 가격 목록으로 주문 항목 목록을 생성하는 메서드
+         */
+        fun createOrderItems(
+            productIds: List<Long>,
+            quantities: List<Int>,
+            prices: List<Price>,
+        ): List<OrderItem> =
+            productIds.mapIndexed { index, productId ->
+                // 각 상품에 대한 배송 정보를 생성합니다
+                val delivery = Delivery.of()
+
+                // 상품 정보와 수량으로 주문 항목을 생성합니다
+                of(
+                    productId = productId,
+                    quantity = quantities[index],
+                    price = prices[index],
+                    status = OrderItemStatus.PENDING,
+                    delivery = delivery,
+                )
+            }
+
         fun List<OrderItem>.sumOfPrices(): Price = this.fold(Price.of()) { acc, orderItem -> acc + orderItem.getTotalPrice() }
     }
 }

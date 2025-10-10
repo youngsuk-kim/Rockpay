@@ -11,7 +11,7 @@ tasks.getByName("jar") {
 }
 
 dependencies {
-    implementation(project(":domain:domain-core"))
+    compileOnly(project(":domain:domain-core"))
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     runtimeOnly("com.h2database:h2")
 }

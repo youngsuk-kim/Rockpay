@@ -1,0 +1,18 @@
+rockpay:
+  messaging:
+    # Type of message broker to use (kafka or rabbitmq)
+    type: rabbitmq
+    
+    # Kafka configuration
+    kafka:
+      bootstrap-servers: localhost:9092
+      consumer-group-id: rockpay-consumer
+      auto-offset-reset: earliest
+    
+    # RabbitMQ configuration
+    rabbitmq:
+      host: localhost
+      port: 5672
+      username: admin
+      password: password
+      virtual-host: /

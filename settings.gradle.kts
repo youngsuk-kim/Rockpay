@@ -11,8 +11,10 @@ include(
     "domain:domain-support",
     "infrastructure:databases:db-core",
     "infrastructure:databases:db-order",
+    "infrastructure:messaging",
     "clients:client-example",
-    "clients:client-product"
+    "clients:client-product",
+    "utils"
 )
 
 pluginManagement {
