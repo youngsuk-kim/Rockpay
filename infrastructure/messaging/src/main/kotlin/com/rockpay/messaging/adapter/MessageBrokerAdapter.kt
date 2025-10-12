@@ -6,13 +6,13 @@ import com.rockpay.messaging.MessageBroker as MessagingMessageBroker
 import com.rockpay.support.domain.MessageBroker as SupportMessageBroker
 
 /**
- * Configuration class that adapts between the two MessageBroker interfaces
+ * 두 개의 MessageBroker 인터페이스 간 어댑터 설정 클래스
  */
 @Configuration
 class MessageBrokerAdapter {
     /**
-     * Creates a bean that implements the support domain's MessageBroker interface
-     * and delegates to the messaging module's MessageBroker implementation
+     * support domain의 MessageBroker 인터페이스를 구현하고
+     * messaging 모듈의 MessageBroker 구현체에 위임하는 빈을 생성합니다.
      */
     @Bean
     fun supportMessageBroker(messagingMessageBroker: MessagingMessageBroker): SupportMessageBroker =

@@ -11,7 +11,7 @@ import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter
 import java.util.concurrent.ConcurrentHashMap
 
 /**
- * RabbitMQ implementation of the MessageBroker interface
+ * MessageBroker 인터페이스의 RabbitMQ 구현체
  */
 class RabbitMQMessageBroker(
     private val rabbitTemplate: RabbitTemplate,
@@ -32,15 +32,15 @@ class RabbitMQMessageBroker(
     ) {
         val messageProperties = MessageProperties()
 
-        // Add headers to the message properties
+        // 메시지 속성에 헤더 추가
         headers.forEach { (key, value) ->
             messageProperties.setHeader(key, value)
         }
 
-        // Create a message with the content and properties
+        // 컨텐츠와 속성을 포함한 메시지 생성
         val amqpMessage = messageConverter.toMessage(message, messageProperties)
 
-        // Send the message to the exchange with the routing key (topic)
+        // 라우팅 키(토픽)를 사용하여 익스체인지로 메시지 전송
         rabbitTemplate.send(topic, "", amqpMessage)
     }
 
@@ -60,38 +60,38 @@ class RabbitMQMessageBroker(
     ) {
         val containerKey = "$topic-$groupId"
 
-        // Check if we already have a container for this topic and group
+        // 이미 해당 토픽과 그룹에 대한 컨테이너가 있는지 확인
         if (containers.containsKey(containerKey)) {
             return
         }
 
-        // Create a message listener that will invoke our callback
+        // 콜백을 호출할 메시지 리스너 생성
         val messageListener =
             object : MessageListenerAdapter() {
                 override fun onMessage(message: org.springframework.amqp.core.Message) {
                     val headers = mutableMapOf<String, Any>()
 
-                    // Extract headers from the message properties
+                    // 메시지 속성에서 헤더 추출
                     message.messageProperties.headers.forEach { (key, value) ->
                         if (value != null) {
                             headers[key] = value
                         }
                     }
 
-                    // Convert the message body to a string
+                    // 메시지 본문을 문자열로 변환
                     val messageBody = String(message.body)
 
-                    // Invoke the callback with the message body and headers
+                    // 메시지 본문과 헤더로 콜백 호출
                     callback(messageBody, headers)
                 }
             }
 
-        // Create and configure the container
+        // 컨테이너 생성 및 설정
         val container = SimpleMessageListenerContainer(connectionFactory)
         container.setQueueNames(groupId)
         container.setMessageListener(messageListener)
 
-        // Start the container and store it
+        // 컨테이너 시작 및 저장
         container.start()
         containers[containerKey] = container
     }

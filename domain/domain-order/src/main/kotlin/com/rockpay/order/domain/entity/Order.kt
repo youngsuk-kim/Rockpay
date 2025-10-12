@@ -5,6 +5,8 @@ import com.rockpay.support.domain.Price
 import jakarta.persistence.CascadeType
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
+import jakarta.persistence.EnumType
+import jakarta.persistence.Enumerated
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
@@ -17,7 +19,7 @@ import jakarta.persistence.Table
 class Order(
     id: Long = 0L,
     orderStatus: OrderStatus,
-    orderItems: List<OrderItem> = emptyList(),
+    orderItems: MutableList<OrderItem> = mutableListOf(),
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,12 +27,13 @@ class Order(
         private set
 
     @Column(name = "order_status")
+    @Enumerated(EnumType.STRING)
     var orderStatus: OrderStatus = orderStatus
         private set
 
-    @OneToMany(cascade = [CascadeType.ALL])
-    @JoinColumn(name = "order_id")
-    var orderItems: List<OrderItem> = orderItems
+    @OneToMany(cascade = [CascadeType.ALL], orphanRemoval = true)
+    @JoinColumn(name = "order_id", nullable = false)
+    var orderItems: MutableList<OrderItem> = orderItems.toMutableList()
         private set
 
     fun markAsPaid() {
@@ -49,6 +52,6 @@ class Order(
     }
 
     companion object {
-        fun of(orderItems: List<OrderItem>): Order = Order(orderStatus = OrderStatus.PENDING, orderItems = orderItems)
+        fun of(orderItems: List<OrderItem>): Order = Order(orderStatus = OrderStatus.PENDING, orderItems = orderItems.toMutableList())
     }
 }

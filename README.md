@@ -1,3 +1,106 @@
+# RockPay
+
+RockPay는 Kotlin과 Spring Boot 기반의 이커머스 결제 정산 플랫폼입니다.
+
+## 프로젝트 구조
+
+### 멀티모듈 아키텍처
+
+```
+RockPay
+├── apis/                   # API 레이어 (포트: 8081)
+│   ├── api-order          # 주문 REST API
+│   ├── api-core           # 코어 REST API
+│   └── api-docs           # API 문서
+│
+├── applications/          # 애플리케이션 레이어
+│   ├── app-order          # 주문 비즈니스 로직 및 유스케이스
+│   └── app-core           # 코어 비즈니스 로직
+│
+├── domain/                # 도메인 레이어
+│   ├── domain-order       # 주문 도메인 (Order, OrderItem, Delivery)
+│   ├── domain-core        # 코어 도메인
+│   └── domain-support     # 도메인 공통 유틸리티 (Price 등)
+│
+├── infrastructure/        # 인프라 레이어
+│   ├── databases/
+│   │   ├── db-order      # 주문 데이터베이스 설정
+│   │   └── db-core       # 코어 데이터베이스 설정
+│   └── messaging/         # Kafka/RabbitMQ 설정
+│
+└── clients/               # 외부 통신 레이어
+    ├── client-product    # 상품 서비스 통신 (OpenFeign)
+    └── client-example    # 예제 클라이언트
+```
+
+### 레이어별 역할
+
+#### API Layer
+- REST API 엔드포인트 제공
+- 요청/응답 처리 및 검증
+- `api-core`: 주문을 제외한 API (포트 8080)
+- `api-order`: 주문 관련 API (포트 8081)
+
+#### Application Layer
+- 비즈니스 로직 오케스트레이션
+- 유스케이스 구현
+- 이벤트 발행 (예: OrderCreationEventPublisher)
+- 도메인과 인프라스트럭처 연결
+
+#### Domain Layer
+- 순수 비즈니스 로직
+- 엔티티, 값 객체, 도메인 이벤트
+- 리포지토리 인터페이스 정의
+- **인프라스트럭처 의존성 없음**
+
+#### Infrastructure Layer
+- 데이터베이스 설정 (H2/MySQL 멀티 프로파일)
+- 메시지 브로커 설정 (Kafka/RabbitMQ)
+- 도메인 인터페이스 구현
+
+#### Clients Layer
+- 외부 서비스 통신
+- OpenFeign을 사용한 서비스 간 통신
+- API 응답 모델 관리
+
+### 의존성 흐름
+
+```
+API → Application → Domain
+      ↓              ↓
+   Infrastructure ← Domain
+```
+
+- API 모듈은 Application에 의존
+- Application은 Domain과 Infrastructure에 의존
+- Domain은 어떤 레이어에도 의존하지 않음
+- Infrastructure는 Domain 인터페이스를 구현
+- Clients는 어떤 레이어에도 의존하지 않음
+
+### 기술 스택
+
+- **Language**: Kotlin 1.9.25
+- **Framework**: Spring Boot 3.5.3, Spring Cloud 2025.0.0
+- **Database**: H2 (local), MySQL (local-dev)
+- **Messaging**: Kafka, RabbitMQ
+- **Test**: Kotest, SpringMockK, ArchUnit
+- **Communication**: OpenFeign
+
+### 주요 설정
+
+#### 데이터베이스 프로파일
+- `local`/`default`: H2 인메모리 DB (DDL auto-create)
+- `local-dev`: MySQL on localhost:13306
+
+#### 메시징 설정
+- Kafka 기본 포트: 9092
+- RabbitMQ 기본 포트: 5672
+- 설정 기반 브로커 타입 선택 가능
+
+---
+
+## 요구사항
+
 ## 1. 판매자 관련
 
 - 판매자는 상품 판매를 목적으로 가입을 할 수 있다.

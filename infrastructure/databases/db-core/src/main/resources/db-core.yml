@@ -37,7 +37,13 @@ database:
 spring.config.activate.on-profile: local-dev
 
 spring:
+  sql:
+    init:
+      mode: always
   jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create
     properties:
       hibernate:
         format_sql: true
@@ -47,9 +53,9 @@ database:
   datasource:
     core:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://${db.core.url}
-      username: ${db.core-db.username}
-      password: ${db.core-db.password}
+      jdbc-url: jdbc:mysql://${DB_CORE_HOST}:${DB_CORE_PORT}/${DB_CORE_NAME}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
+      username: ${DB_CORE_USERNAME}
+      password: ${DB_CORE_PASSWORD}
       maximum-pool-size: 5
       connection-timeout: 1100
       keepalive-time: 30000

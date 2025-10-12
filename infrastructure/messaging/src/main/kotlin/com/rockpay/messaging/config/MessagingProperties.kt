@@ -3,64 +3,64 @@ package com.rockpay.messaging.config
 import org.springframework.boot.context.properties.ConfigurationProperties
 
 /**
- * Configuration properties for messaging
+ * 메시징 설정 속성
  */
 @ConfigurationProperties(prefix = "rockpay.messaging")
 data class MessagingProperties(
     /**
-     * The type of message broker to use (kafka or rabbitmq)
+     * 사용할 메시지 브로커 타입 (kafka 또는 rabbitmq)
      */
     val type: String = "kafka",
     /**
-     * Kafka configuration properties
+     * Kafka 설정 속성
      */
     val kafka: KafkaProperties = KafkaProperties(),
     /**
-     * RabbitMQ configuration properties
+     * RabbitMQ 설정 속성
      */
     val rabbitmq: RabbitMQProperties = RabbitMQProperties(),
 )
 
 /**
- * Kafka configuration properties
+ * Kafka 설정 속성
  */
 data class KafkaProperties(
     /**
-     * Bootstrap servers
+     * 부트스트랩 서버
      */
     val bootstrapServers: String = "localhost:9092",
     /**
-     * Consumer group ID
+     * 컨슈머 그룹 ID
      */
     val consumerGroupId: String = "rockpay-consumer",
     /**
-     * Auto offset reset
+     * 자동 오프셋 리셋
      */
     val autoOffsetReset: String = "earliest",
 )
 
 /**
- * RabbitMQ configuration properties
+ * RabbitMQ 설정 속성
  */
 data class RabbitMQProperties(
     /**
-     * Host
+     * 호스트
      */
     val host: String = "localhost",
     /**
-     * Port
+     * 포트
      */
     val port: Int = 5672,
     /**
-     * Username
+     * 사용자명
      */
     val username: String = "guest",
     /**
-     * Password
+     * 비밀번호
      */
     val password: String = "guest",
     /**
-     * Virtual host
+     * 가상 호스트
      */
     val virtualHost: String = "/",
 )

@@ -1,17 +1,16 @@
 package com.rockpay.messaging
 
 /**
- * Common interface for message brokers (Kafka, RabbitMQ, etc.)
- * This interface defines the contract for sending and receiving messages
- * in an event-driven architecture.
+ * 메시지 브로커의 공통 인터페이스 (Kafka, RabbitMQ 등)
+ * 이벤트 기반 아키텍처에서 메시지를 송수신하는 계약을 정의합니다.
  */
 interface MessageBroker {
     /**
-     * Publishes a message to the specified topic/exchange
+     * 지정된 토픽/익스체인지로 메시지를 발행합니다.
      *
-     * @param topic The topic or exchange to publish the message to
-     * @param message The message to publish
-     * @param headers Optional headers to include with the message
+     * @param topic 메시지를 발행할 토픽 또는 익스체인지
+     * @param message 발행할 메시지
+     * @param headers 메시지에 포함할 선택적 헤더
      */
     fun publish(
         topic: String,
@@ -20,11 +19,11 @@ interface MessageBroker {
     )
 
     /**
-     * Publishes a message to the specified topic/exchange
+     * 지정된 토픽/익스체인지로 메시지를 발행합니다.
      *
-     * @param topic The topic or exchange to publish the message to
-     * @param message The message to publish as an object (will be serialized to JSON)
-     * @param headers Optional headers to include with the message
+     * @param topic 메시지를 발행할 토픽 또는 익스체인지
+     * @param message 객체로 발행할 메시지 (JSON으로 직렬화됨)
+     * @param headers 메시지에 포함할 선택적 헤더
      */
     fun publish(
         topic: String,
@@ -33,11 +32,11 @@ interface MessageBroker {
     )
 
     /**
-     * Subscribes to a topic/exchange to receive messages
+     * 토픽/익스체인지를 구독하여 메시지를 수신합니다.
      *
-     * @param topic The topic or exchange to subscribe to
-     * @param groupId The consumer group ID (for Kafka) or queue name (for RabbitMQ)
-     * @param callback The callback function to invoke when a message is received
+     * @param topic 구독할 토픽 또는 익스체인지
+     * @param groupId 컨슈머 그룹 ID (Kafka용) 또는 큐 이름 (RabbitMQ용)
+     * @param callback 메시지 수신 시 호출될 콜백 함수
      */
     fun subscribe(
         topic: String,
@@ -46,10 +45,10 @@ interface MessageBroker {
     )
 
     /**
-     * Unsubscribes from a topic/exchange
+     * 토픽/익스체인지 구독을 해제합니다.
      *
-     * @param topic The topic or exchange to unsubscribe from
-     * @param groupId The consumer group ID (for Kafka) or queue name (for RabbitMQ)
+     * @param topic 구독 해제할 토픽 또는 익스체인지
+     * @param groupId 컨슈머 그룹 ID (Kafka용) 또는 큐 이름 (RabbitMQ용)
      */
     fun unsubscribe(
         topic: String,

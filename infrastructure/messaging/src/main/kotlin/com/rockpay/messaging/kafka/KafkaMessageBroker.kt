@@ -12,7 +12,7 @@ import org.springframework.kafka.listener.MessageListener
 import java.util.concurrent.ConcurrentHashMap
 
 /**
- * Kafka implementation of the MessageBroker interface
+ * MessageBroker 인터페이스의 Kafka 구현체
  */
 class KafkaMessageBroker(
     private val kafkaTemplate: KafkaTemplate<String, String>,
@@ -28,7 +28,7 @@ class KafkaMessageBroker(
     ) {
         val record = ProducerRecord<String, String>(topic, message)
 
-        // Add headers to the record
+        // 레코드에 헤더 추가
         headers.forEach { (key, value) ->
             record.headers().add(RecordHeader(key, value.toString().toByteArray()))
         }
@@ -52,21 +52,21 @@ class KafkaMessageBroker(
     ) {
         val containerKey = "$topic-$groupId"
 
-        // Check if we already have a container for this topic and group
+        // 이미 해당 토픽과 그룹에 대한 컨테이너가 있는지 확인
         if (containers.containsKey(containerKey)) {
             return
         }
 
-        // Configure container properties with groupId
+        // groupId로 컨테이너 속성 설정
         val containerProperties = ContainerProperties(topic)
 
-        // Create and configure the container with the consumer factory and properties
+        // 컨슈머 팩토리와 속성으로 컨테이너 생성 및 설정
         val container = KafkaMessageListenerContainer(kafkaConsumerFactory, containerProperties)
 
-        // Set the group ID on the container's consumer properties
+        // 컨테이너의 컨슈머 속성에 그룹 ID 설정
         container.containerProperties.setGroupId(groupId)
 
-        // Set up the message listener with explicit type parameter
+        // 명시적인 타입 파라미터로 메시지 리스너 설정
         container.setupMessageListener(
             MessageListener<String, String> { record ->
                 val headers = mutableMapOf<String, Any>()
@@ -78,7 +78,7 @@ class KafkaMessageBroker(
             },
         )
 
-        // Start the container and store it
+        // 컨테이너 시작 및 저장
         container.start()
         containers[containerKey] = container
     }

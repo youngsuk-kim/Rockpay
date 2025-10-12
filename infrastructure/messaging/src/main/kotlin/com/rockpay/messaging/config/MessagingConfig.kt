@@ -23,14 +23,14 @@ import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.kafka.core.ProducerFactory
 
 /**
- * Configuration for messaging
+ * 메시징 설정
  */
 @Configuration
 @ComponentScan(basePackages = ["com.rockpay.messaging"])
 @EnableConfigurationProperties(MessagingProperties::class)
 class MessagingConfig {
     /**
-     * Creates a MessageBroker bean based on the configured type
+     * 설정된 타입에 따라 MessageBroker 빈을 생성합니다.
      */
     @Bean
     @ConditionalOnProperty(name = ["rockpay.messaging.type"], havingValue = "kafka")
@@ -49,7 +49,7 @@ class MessagingConfig {
     ): MessageBroker = RabbitMQMessageBroker(rabbitTemplate, connectionFactory, objectMapper)
 
     /**
-     * Kafka producer factory
+     * Kafka 프로듀서 팩토리
      */
     @Bean
     fun kafkaProducerFactory(messagingProperties: MessagingProperties): ProducerFactory<String, String> {
@@ -61,13 +61,13 @@ class MessagingConfig {
     }
 
     /**
-     * Kafka template
+     * Kafka 템플릿
      */
     @Bean
     fun kafkaTemplate(producerFactory: ProducerFactory<String, String>): KafkaTemplate<String, String> = KafkaTemplate(producerFactory)
 
     /**
-     * Kafka consumer factory
+     * Kafka 컨슈머 팩토리
      */
     @Bean
     fun kafkaConsumerFactory(messagingProperties: MessagingProperties): ConsumerFactory<String, String> {
@@ -81,7 +81,7 @@ class MessagingConfig {
     }
 
     /**
-     * RabbitMQ connection factory
+     * RabbitMQ 커넥션 팩토리
      */
     @Bean
     fun rabbitConnectionFactory(messagingProperties: MessagingProperties): ConnectionFactory =
@@ -94,13 +94,7 @@ class MessagingConfig {
         }
 
     /**
-     * ObjectMapper bean
-     */
-    @Bean
-    fun objectMapper(): ObjectMapper = ObjectMapper()
-
-    /**
-     * RabbitMQ template
+     * RabbitMQ 템플릿
      */
     @Bean
     fun rabbitTemplate(connectionFactory: ConnectionFactory): RabbitTemplate = RabbitTemplate(connectionFactory)

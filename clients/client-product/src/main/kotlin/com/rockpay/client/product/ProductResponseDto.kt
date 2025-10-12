@@ -4,7 +4,7 @@ import com.rockpay.client.product.model.ProductClientResult
 import com.rockpay.support.domain.Price
 import java.math.BigDecimal
 
-internal data class ProductResponseDto(
+data class ProductResponseDto(
     val id: Long,
     val name: String,
     val basePrice: String,
