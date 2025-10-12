@@ -4,18 +4,11 @@ import com.rockpay.order.domain.entity.Order
 import com.rockpay.order.domain.entity.OrderItem
 import java.time.LocalDateTime
 
-/**
- * Domain event that represents an order being created.
- * This event is published after the order is successfully saved to the database.
- */
 data class OrderCreatedEvent(
     val orderId: Long,
     val orderItems: List<OrderItemEvent>,
     val createdAt: LocalDateTime = LocalDateTime.now(),
 ) {
-    /**
-     * Data class representing order item information in the event.
-     */
     data class OrderItemEvent(
         val productId: Long,
         val quantity: Int,
